@@ -21,7 +21,7 @@ class descriptionPetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Descrição"
+        title = "Descrição do pet"
 
     }
 
