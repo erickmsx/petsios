@@ -36,10 +36,10 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func configurePetList(){
         
-        let billy = Pet(name: "Billy", specie: "Cachorro", image: #imageLiteral(resourceName: "dog"))
+        let billy = Pet(name: "Billy", specie: "Cachorro", image: #imageLiteral(resourceName: "dog"), birthDate: "10/12/2022")
         petsList.append(billy)
         
-        let pietra = Pet(name: "Pietra", specie: "Gato", image: #imageLiteral(resourceName: "gata"))
+        let pietra = Pet(name: "Pietra", specie: "Gato", image: #imageLiteral(resourceName: "gata"), birthDate: "15/03/2022")
         petsList.append(pietra)
     }
     
@@ -59,9 +59,19 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.petNameLabel.text = pet.petName
         cell.petSpecieLabel.text = pet.petSpecie
         cell.petImageView.image = pet.petImage
+        cell.selectionStyle = .none //take off effect when cell is clicked
         
         return cell
         
         //Adjust row height 100 in ListPetViewController.xib/TableView/6 item
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let row = indexPath.row
+        let pet = petsList[row]
+        let descriptionPetVC = descriptionPetViewController(selectedPet: pet)
+        
+        navigationController?.pushViewController(descriptionPetVC, animated: true)
     }
 }

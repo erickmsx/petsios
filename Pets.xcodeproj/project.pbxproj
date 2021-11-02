@@ -16,10 +16,10 @@
 		6F0D0A49272E34A1004BB3AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D0A48272E34A1004BB3AF /* SceneDelegate.swift */; };
 		6F0D0A4B272E34A1004BB3AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0D0A4A272E34A1004BB3AF /* ViewController.swift */; };
 		6F0D0A4E272E34A1004BB3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D0A4C272E34A1004BB3AF /* Main.storyboard */; };
-		6F0D0A50272E34A4004BB3AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D0A4F272E34A4004BB3AF /* Assets.xcassets */; };
 		6F0D0A53272E34A4004BB3AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D0A51272E34A4004BB3AF /* LaunchScreen.storyboard */; };
 		6F64D9E627309DF200803AB2 /* descriptionPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64D9E427309DF200803AB2 /* descriptionPetViewController.swift */; };
 		6F64D9E727309DF200803AB2 /* descriptionPetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F64D9E527309DF200803AB2 /* descriptionPetViewController.xib */; };
+		6F64D9E827310CCD00803AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F0D0A4F272E34A4004BB3AF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,7 +149,7 @@
 				6F0D0A53272E34A4004BB3AF /* LaunchScreen.storyboard in Resources */,
 				6F0B1EE3272F3D83001AD893 /* ListPetViewController.xib in Resources */,
 				6F0B1EDF272F3BB3001AD893 /* PetTableViewCell.xib in Resources */,
-				6F0D0A50272E34A4004BB3AF /* Assets.xcassets in Resources */,
+				6F64D9E827310CCD00803AB2 /* Assets.xcassets in Resources */,
 				6F0D0A4E272E34A1004BB3AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
