@@ -42,6 +42,6 @@ class descriptionPetViewController: UIViewController {
         petSpecieLabel.text = pet.petSpecie
         petBirthDateLabel.text = pet.petBirthDate
     
-        title = "Descrição"
+        title = pet.petName
     }
 }
