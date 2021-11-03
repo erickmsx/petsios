@@ -62,7 +62,6 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.selectionStyle = .none //take off effect when cell is clicked
         
         return cell
-        
         //Adjust row height 100 in ListPetViewController.xib/TableView/6 item
     }
     

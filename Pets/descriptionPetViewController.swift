@@ -31,6 +31,9 @@ class descriptionPetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        photoImageView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1).cgColor
+        photoImageView.layer.borderWidth = 2
+        
         photoImageView.layer.cornerRadius = photoImageView.frame.size.width/2
         photoImageView.clipsToBounds = true
         
