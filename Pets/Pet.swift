@@ -12,12 +12,11 @@ class Pet{
     let petName: String
     let petSpecie: String
     let petBirthDate: String
-    let petImage: UIImage
+    var petImage: UIImage?
     
-    init(name: String, specie: String, image: UIImage, birthDate: String){
+    init(name: String, specie: String, birthDate: String){
         
         petName = name
-        petImage = image
         petSpecie = specie
         petBirthDate = birthDate
     }

@@ -6,11 +6,10 @@
 //
 
 import UIKit
+var petsList: [Pet] = []
 
 //implement func of UITableViewDataSource
 class ListPetViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    var petsList: [Pet] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +20,7 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         
         title = "Lista de pets"
         
-        configurePetList()
+        //configurePetList()
         configureTableView()
     }
     
@@ -34,14 +33,14 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self// define who is receiving data info
     }
     
-    func configurePetList(){
+    /*func configurePetList(){
         
-        let billy = Pet(name: "Billy", specie: "Cachorro", image: #imageLiteral(resourceName: "dog"), birthDate: "10/12/2022")
+        let billy = Pet(name: "Billy", specie: "Cachorro", birthDate: "10/12/2022")
         petsList.append(billy)
         
-        let pietra = Pet(name: "Pietra", specie: "Gato", image: #imageLiteral(resourceName: "gata"), birthDate: "15/03/2022")
+        let pietra = Pet(name: "Pietra", specie: "Gato", birthDate: "15/03/2022")
         petsList.append(pietra)
-    }
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petsList.count

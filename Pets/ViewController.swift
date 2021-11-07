@@ -16,10 +16,16 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func buttonListPets(_ sender: Any) {
+    @IBAction func buttonListPet(_ sender: Any) {
     
         let petListVC = ListPetViewController()
         navigationController?.pushViewController(petListVC, animated: true)
+    }
+    
+    @IBAction func buttonRegisterPet(_ sender: Any) {
+        
+        let registerPetVC = RegisterPetViewController()
+        navigationController?.pushViewController(registerPetVC, animated: true)
     }
     
 }

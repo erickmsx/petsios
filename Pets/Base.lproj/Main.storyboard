@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonListPets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E22-Av-UW6"/>
+                                    <action selector="buttonListPet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E22-Av-UW6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBL-UO-goh">
@@ -36,6 +36,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonRegisterPet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Rw-75-JWF"/>
                                     <action selector="buttonRegisterPet:" destination="Qvp-3C-WX6" eventType="touchUpInside" id="ta1-J5-qhm"/>
                                 </connections>
                             </button>
