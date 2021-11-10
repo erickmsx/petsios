@@ -32,7 +32,7 @@ class descriptionPetViewController: UIViewController {
         super.viewDidLoad()
         
         //circle imageview
-        photoImageView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1).cgColor
+        photoImageView.layer.borderColor = pet.petColorBorder.cgColor
         photoImageView.layer.borderWidth = 2
         photoImageView.layer.cornerRadius = photoImageView.frame.size.width/2
         photoImageView.clipsToBounds = true

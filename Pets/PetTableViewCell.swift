@@ -10,10 +10,9 @@ import UIKit
 class PetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var petImageView: UIImageView!
-        
     @IBOutlet weak var petNameLabel: UILabel!
-    
     @IBOutlet weak var petSpecieLabel: UILabel!
+    @IBOutlet weak var isVaccinatedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

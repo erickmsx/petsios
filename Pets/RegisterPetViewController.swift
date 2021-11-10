@@ -7,16 +7,19 @@
 
 import UIKit
 
-class RegisterPetViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+protocol addPetDelegate{
+    func didAddPet(pet: Pet)
+}
+
+class RegisterPetViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ColorSelection {
     
-    
+    @IBOutlet weak var isVaccinatedSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var nameTextF: UITextField!
-    
     @IBOutlet weak var birthDateTextF: UITextField!
-    
     @IBOutlet weak var specieTextF: UITextField!
+    var selectedColor: UIColor?
+    var delegate: addPetDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,14 +107,34 @@ class RegisterPetViewController: UIViewController, UITextFieldDelegate, UIImageP
             return
         }
         
+        guard let color = selectedColor else{
+            
+            presentMessage(message: "Você deve selecionar uma cor")
+            return
+        }
+        
         //Constructor parameters
-        let pet = Pet(name: petName, specie: petSpecie, birthDate: petBirthDate)
+        let pet = Pet(name: petName, specie: petSpecie, birthDate: petBirthDate, color: color, isVaccinated: isVaccinatedSwitch.isOn )
         
         pet.petImage = imageView.image
         petsList.append(pet)
-        presentMessage(message: "Pet \(petName) cadastrado com sucesso")
+        delegate?.didAddPet(pet: pet)
+        dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func selectColor(_ sender: Any) {
+        
+        let colorSelectionVC = ColorSelectionViewController()
+        present(colorSelectionVC, animated: true, completion: nil)
+        
+        colorSelectionVC.delegate = self
+    }
+    
+    //select the pet circle image color
+    func didSelectColor(color: UIColor) {
+        selectedColor = color
+    }
+
     //Pop-up Message
     func presentMessage(message: String){
         

@@ -13,11 +13,15 @@ class Pet{
     let petSpecie: String
     let petBirthDate: String
     var petImage: UIImage?
+    let petColorBorder: UIColor
+    let isPetVaccinated: Bool
     
-    init(name: String, specie: String, birthDate: String){
+    init(name: String, specie: String, birthDate: String, color: UIColor, isVaccinated: Bool){
         
         petName = name
         petSpecie = specie
         petBirthDate = birthDate
+        petColorBorder = color
+        isPetVaccinated = isVaccinated
     }
 }
