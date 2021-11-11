@@ -120,6 +120,7 @@ class RegisterPetViewController: UIViewController, UITextFieldDelegate, UIImageP
         petsList.append(pet)
         delegate?.didAddPet(pet: pet)
         dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true) //close the VC for the view before that
     }
     
     @IBAction func selectColor(_ sender: Any) {
@@ -133,6 +134,9 @@ class RegisterPetViewController: UIViewController, UITextFieldDelegate, UIImageP
     //select the pet circle image color
     func didSelectColor(color: UIColor) {
         selectedColor = color
+        imageView.layer.borderColor = selectedColor?.cgColor
+        
+        
     }
 
     //Pop-up Message

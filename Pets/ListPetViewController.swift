@@ -15,6 +15,9 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let cellId = "cellPetId"
     
+    var filteredItems: [Pet] = []
+    var isFiltering: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +33,65 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         
         title = "Lista de pets"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPet))
-        navigationItem.rightBarButtonItem = addButton
+        
+        let filterButton = UIBarButtonItem(title: "Filtrar", style: .done, target: self, action: #selector(filterPets))
+        
+        navigationItem.rightBarButtonItems = [addButton, filterButton]
+    }
+    
+    //opens the alertcontroller showing the options
+    @objc func filterPets(){
+        
+        let alert = UIAlertController(title: "Pets", message: "Selecione uma opção", preferredStyle: .actionSheet)
+        
+        let vaccinatedButton = UIAlertAction(title: "Vacinados", style: .default) { (_) in
+            
+            self.filteredItems = []
+            self.isFiltering = true
+            for pet in petsList{
+                
+                if pet.isPetVaccinated {
+                    self.filteredItems.append(pet)
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(vaccinatedButton)
+        
+        let notVaccinateButton = UIAlertAction(title: "Não vacinados", style: .default) { (_) in
+            
+            self.filteredItems = []
+            self.isFiltering = true
+            
+            for pet in petsList{
+                if !pet.isPetVaccinated{
+                    self.filteredItems.append(pet)
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(notVaccinateButton)
+        
+        let allPetsButton = UIAlertAction(title: "Ver todos", style: .default) { (_) in
+            
+            self.isFiltering = false
+            self.filteredItems = []
+            self.tableView.reloadData()
+            
+        }
+        
+        alert.addAction(allPetsButton)
+        
+        let cancelButton = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true, completion: nil)
+        //end
     }
     
     @objc func addPet(){
@@ -56,16 +117,21 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     /*func configurePetList(){
-     
-     let billy = Pet(name: "Billy", specie: "Cachorro", birthDate: "10/12/2022")
-     petsList.append(billy)
-     
-     let pietra = Pet(name: "Pietra", specie: "Gato", birthDate: "15/03/2022")
-     petsList.append(pietra)
-     }*/
+                
+        let billy = Pet(name: "Billy", specie: "Cachorro", birthDate: "11 de novembro", color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), isVaccinated: true)
+        petsList.append(billy)
+        
+        let pietra = Pet(name: "Pietra", specie: "Gato", birthDate: "12 de setembro", color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), isVaccinated: false)
+        petsList.append(pietra)
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petsList.count
+        
+        if isFiltering{
+            return filteredItems.count
+        } else{
+            return petsList.count
+        }
     }
     
     //Through the "cellPetId" we can multiply the cell that was created above on tableView.register...
@@ -74,8 +140,15 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PetTableViewCell
         
-        let row = indexPath.row //for line
-        let pet = petsList[row] //list elements for line
+        //let row = indexPath.row //for line
+        //let pet = petsList[row] //list elements for line if it was just a list with no filter
+        
+        var pet: Pet
+        if isFiltering{
+            pet = filteredItems[indexPath.row]
+        } else {
+            pet = petsList[indexPath.row]
+        }
         
         cell.petNameLabel.text = pet.petName
         cell.petSpecieLabel.text = pet.petSpecie
@@ -98,8 +171,12 @@ class ListPetViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let row = indexPath.row
-        let pet = petsList[row]
+        var pet: Pet
+        if isFiltering{
+            pet = filteredItems[indexPath.row]
+        } else {
+            pet = petsList[indexPath.row]
+        }
         let descriptionPetVC = descriptionPetViewController(selectedPet: pet)
         
         navigationController?.pushViewController(descriptionPetVC, animated: true)
